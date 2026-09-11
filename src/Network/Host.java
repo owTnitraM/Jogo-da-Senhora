@@ -25,7 +25,9 @@ public class Host {
         return "Player not found";
     }
 
-    private boolean addPlayer(String nick) {
+    //public boolean
+
+    public Object addPlayer(String nick) {
         int id = 1;
 
         if (!players.isEmpty()) {
