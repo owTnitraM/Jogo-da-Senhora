@@ -76,7 +76,7 @@ public class View {
         roomScoreInfoPanel.add(roomScoresLabel);
 
         gameBoardPanel.add(p1InfosPanel);
-        gameBoardPanel.add(gameBoardPanel);
+        gameBoardPanel.add(boardPanel);
         gameBoardPanel.add(p2InfosPanel);
 
         roomInfosPanel.add(roomInfosLabel);
