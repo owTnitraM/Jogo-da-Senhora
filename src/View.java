@@ -4,11 +4,14 @@ import lombok.Setter;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 
 @Getter
 @Setter
 public class View {
     Frame frame = new Frame("Jogo da Senhora de Idade");
+
+
 
     // Main
     Label startScreenLabel = new Label("Jogo da senhora", 1);
@@ -21,7 +24,7 @@ public class View {
 
     // Game
 
-    Label roomScoresLabel = new Label("P1: 0\nP2: 0");
+    ArrayList<Label> roomScoreLabelList = new ArrayList<Label>();
     Panel roomScoreInfoPanel = new Panel();
 
     Label p1GameScoreLabel = new Label("Score: 0");
@@ -72,18 +75,46 @@ public class View {
 
         /*frame.add(startScreenLabel, BorderLayout.CENTER);
         frame.add(startScreenButtonsPanel, BorderLayout.SOUTH);*/
+        roomScoreInfoPanel.setLayout(new GridLayout(15, 1));
 
-        roomScoreInfoPanel.add(roomScoresLabel);
 
-        gameBoardPanel.add(p1InfosPanel);
-        gameBoardPanel.add(boardPanel);
-        gameBoardPanel.add(p2InfosPanel);
+        roomScoreLabelList.add(new Label("P1 - Jao"));
+        roomScoreLabelList.add(new Label("Points: 0"));
+        roomScoreLabelList.add(new Label("P2 - Sergio"));
+        roomScoreLabelList.add(new Label("Points: 0"));
 
-        roomInfosPanel.add(roomInfosLabel);
+        for (int i = 0; i < roomScoreLabelList.toArray().length; i++){
+        roomScoreInfoPanel.add(roomScoreLabelList.get(i));
+        }
 
-        frame.add(roomInfosPanel);
-        frame.add(gameBoardPanel);
-        frame.add(roomScoreInfoPanel);
+        p1InfosPanel.add(p1GameScoreLabel);
+        p1InfosPanel.add(p1NameLabel);
+        p1InfosPanel.add(isP1TurnIndicatorCanvas);
+
+        p2InfosPanel.add(p2GameScoreLabel);
+        p2InfosPanel.add(p2NameLabel);
+        p2InfosPanel.add(isP2TurnIndicatorCanvas);
+
+        int gridLen = 3;
+
+        boardPanel.setLayout(new GridLayout(gridLen, gridLen));
+
+        for (int i= 0; i < (gridLen * gridLen); i++){
+            Button btn = new Button("X");
+            btn.setFont(new Font("Arial", Font.BOLD, 50));
+            boardPanel.add(btn);
+        }
+
+        gameBoardPanel.setLayout(new BorderLayout());
+        gameBoardPanel.add(p1InfosPanel, BorderLayout.NORTH);
+        gameBoardPanel.add(boardPanel, BorderLayout.CENTER);
+        gameBoardPanel.add(p2InfosPanel, BorderLayout.SOUTH);
+
+        roomInfosPanel.add(roomInfosLabel, BorderLayout.NORTH);
+
+        frame.add(roomScoreInfoPanel, BorderLayout.WEST);
+        frame.add(gameBoardPanel, BorderLayout.CENTER);
+        frame.add(roomInfosPanel, BorderLayout.EAST);
     }
 
     private void setListeners() {
