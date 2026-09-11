@@ -4,23 +4,23 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Controller implements ActionListener {
-    private final ModeloSenhora cipherModel;
+    private final ModeloSenhora modeloSenhora;
     private final View view;
 
     public Controller() {
-        this.cipherModel = new CipherModel();
+        this.modeloSenhora = new ModeloSenhora();
         this.view = new View();
 
-        view.setChangeModeButtonActionListener(e -> onModeChange());
-        view.setExecuteActionButtonActionListener(e -> onExecuteAction());
+        /*view.setChangeModeButtonActionListener(e -> onModeChange());
+        view.setExecuteActionButtonActionListener(e -> onExecuteAction());*/
     }
 
-    public Controller(CipherModel cipherModel, View view) {
-        this.cipherModel = cipherModel;
+    public Controller(ModeloSenhora modeloSenhora, View view) {
+        this.modeloSenhora = modeloSenhora;
         this.view = view;
 
-        view.setChangeModeButtonActionListener(e -> onModeChange());
-        view.setExecuteActionButtonActionListener(e -> onExecuteAction());
+        /*view.setChangeModeButtonActionListener(e -> onModeChange());
+        view.setExecuteActionButtonActionListener(e -> onExecuteAction());*/
     }
 
 
