@@ -5,19 +5,19 @@ import java.awt.event.ActionListener;
 
 public class Controller implements ActionListener {
     private final ModeloSenhora modeloSenhora;
-    private final View view;
+    private final View_old view3;
 
     public Controller() {
         this.modeloSenhora = new ModeloSenhora();
-        this.view = new View();
+        this.view3 = new View_old();
 
         /*view.setChangeModeButtonActionListener(e -> onModeChange());
         view.setExecuteActionButtonActionListener(e -> onExecuteAction());*/
     }
 
-    public Controller(ModeloSenhora modeloSenhora, View view) {
+    public Controller(ModeloSenhora modeloSenhora, View_old view3) {
         this.modeloSenhora = modeloSenhora;
-        this.view = view;
+        this.view3 = view3;
 
         /*view.setChangeModeButtonActionListener(e -> onModeChange());
         view.setExecuteActionButtonActionListener(e -> onExecuteAction());*/

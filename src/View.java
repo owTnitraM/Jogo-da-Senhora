@@ -4,117 +4,96 @@ import lombok.Setter;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
 
 @Getter
 @Setter
 public class View {
-    Frame frame = new Frame("Jogo da Senhora de Idade");
+    // Setup
+    private Label paddingLabel = new Label("");
+    private CardLayout cardLayout = new CardLayout();
+    private Panel screensPanel = new Panel(cardLayout);
 
+    private Frame frame = new Frame("Jogo da Senhora de Idade");
 
+    // Main Menu
+    private Panel mainMenuPanel = new Panel(new BorderLayout());
+    private Panel mainMenuButtonsPanel = new Panel(new GridLayout(1, 5));
 
-    // Main
-    Label startScreenLabel = new Label("Jogo da senhora", 1);
+    private Label mainMenuLabel = new Label("Jogo da Senhora de Idade", 1);
 
-    Button singlePlayerButton = new Button("1 machine");
-    Button enterButton = new Button("Enter room");
-    Button hostButton = new Button("Host room");
-
-    Panel startScreenButtonsPanel = new Panel();
+    private Button playOfflineButton = new Button("Play Offline");
+    private Button enterRoomButton = new Button("Enter");
+    private Button hostRoomButton = new Button("Host");
 
     // Game
+    private Panel gamePanel = new Panel(new BorderLayout());
 
-    ArrayList<Label> roomScoreLabelList = new ArrayList<Label>();
-    Panel roomScoreInfoPanel = new Panel();
+    private Label p1Name = new Label("P1: null");
+    private Label p1Score = new Label("Points: 0");
+    private Label p2Name = new Label("P2: null");
+    private Label p2Score = new Label("Points: 0");
 
-    Label p1GameScoreLabel = new Label("Score: 0");
-    Label p1NameLabel = new Label("Name: ");
-    Canvas isP1TurnIndicatorCanvas = new Canvas() /*{
-        @Override
-        public void paint(Graphics g) {
-            // Escolhe a cor baseada na variável 'verde'
-            if (true) {
-                g.setColor(Color.GREEN);
-            } else {
-                g.setColor(Color.WHITE);
-            }
-            // Desenha um círculo preenchido (x, y, largura, altura)
-            g.fillOval(100, 80, 100, 100);
-        }
-    }*/;
+    private Label roomName = new Label("Room: null");
+    private Label roomGamesPlayed = new Label("Games: 0");
+    private Label roomTime = new Label("Time: 00:00");
 
-    Panel p1InfosPanel = new Panel();
-
-
-    Panel boardPanel = new Panel();
-
-    Canvas isP2TurnIndicatorCanvas = new Canvas();
-    Label p2NameLabel = new Label("Name: ");
-    Label p2GameScoreLabel = new Label("Score: 0");
-
-    Panel p2InfosPanel = new Panel();
-
-    Panel gameBoardPanel = new Panel();
-
-    Label roomInfosLabel = new Label("Host: \nP2: \nGames Played: ");
-    Panel roomInfosPanel = new Panel();
+    private Panel playerInfoPanel = new Panel(new GridLayout(15, 1));
+    private Panel boardPanel = new Panel(new GridLayout(3, 3));
+    private Panel roomInfoPanel = new Panel(new GridLayout(15, 1));
 
     public View() {
-        buildWindow(500, 500);
+        build(500, 500);
+        setListeners();
+    }
+    public View(int w, int h) {
+        build(w, h);
         setListeners();
     }
 
-    private void buildWindow(int windowWidth, int windowHeight) {
+    private void build(int windowWidth, int windowHeight) {
+        // Setup
         frame.setLayout(new BorderLayout());
         frame.setSize(windowWidth, windowHeight);
         frame.setVisible(true);
 
-        startScreenButtonsPanel.add(singlePlayerButton);
-        startScreenButtonsPanel.add(enterButton);
-        startScreenButtonsPanel.add(hostButton);
+        buildMainMenu();
+        screensPanel.add(mainMenuPanel, "MENU");
 
-        /*frame.add(startScreenLabel, BorderLayout.CENTER);
-        frame.add(startScreenButtonsPanel, BorderLayout.SOUTH);*/
-        roomScoreInfoPanel.setLayout(new GridLayout(15, 1));
+        buildGamePanel();
+        screensPanel.add(gamePanel, "GAME");
 
+        frame.setLayout(new BorderLayout());
+        frame.add(screensPanel, BorderLayout.CENTER);
+    }
 
-        roomScoreLabelList.add(new Label("P1 - Jao"));
-        roomScoreLabelList.add(new Label("Points: 0"));
-        roomScoreLabelList.add(new Label("P2 - Sergio"));
-        roomScoreLabelList.add(new Label("Points: 0"));
+    private void buildGamePanel() {
+        playerInfoPanel.add(p1Name);
+        playerInfoPanel.add(p1Score);
+        playerInfoPanel.add(paddingLabel);
+        playerInfoPanel.add(p2Name);
+        playerInfoPanel.add(p2Score);
 
-        for (int i = 0; i < roomScoreLabelList.toArray().length; i++){
-        roomScoreInfoPanel.add(roomScoreLabelList.get(i));
-        }
+        roomInfoPanel.add(roomName);
+        roomInfoPanel.add(roomGamesPlayed);
+        roomInfoPanel.add(roomTime);
 
-        p1InfosPanel.add(p1GameScoreLabel);
-        p1InfosPanel.add(p1NameLabel);
-        p1InfosPanel.add(isP1TurnIndicatorCanvas);
+        gamePanel.add(playerInfoPanel, BorderLayout.WEST);
+        gamePanel.add(boardPanel, BorderLayout.CENTER);
+        gamePanel.add(roomInfoPanel, BorderLayout.EAST);
+    }
 
-        p2InfosPanel.add(p2GameScoreLabel);
-        p2InfosPanel.add(p2NameLabel);
-        p2InfosPanel.add(isP2TurnIndicatorCanvas);
+    private void buildMainMenu() {
+        mainMenuPanel.add(mainMenuLabel, BorderLayout.CENTER);
 
-        int gridLen = 3;
+        playOfflineButton.addActionListener(e -> cardLayout.show(screensPanel, "GAME"));
 
-        boardPanel.setLayout(new GridLayout(gridLen, gridLen));
+        mainMenuButtonsPanel.add(new Label());
+        mainMenuButtonsPanel.add(playOfflineButton);
+        mainMenuButtonsPanel.add(enterRoomButton);
+        mainMenuButtonsPanel.add(hostRoomButton);
+        mainMenuButtonsPanel.add(new Label());
 
-        for (int i= 0; i < (gridLen * gridLen); i++){
-            Button btn = new Button("X");
-            btn.setFont(new Font("Arial", Font.BOLD, 50));
-            boardPanel.add(btn);
-        }
-
-        gameBoardPanel.setLayout(new BorderLayout());
-        gameBoardPanel.add(p1InfosPanel, BorderLayout.NORTH);
-        gameBoardPanel.add(boardPanel, BorderLayout.CENTER);
-        gameBoardPanel.add(p2InfosPanel, BorderLayout.SOUTH);
-
-        roomInfosPanel.add(roomInfosLabel, BorderLayout.NORTH);
-
-        frame.add(roomScoreInfoPanel, BorderLayout.WEST);
-        frame.add(gameBoardPanel, BorderLayout.CENTER);
-        frame.add(roomInfosPanel, BorderLayout.EAST);
+        mainMenuPanel.add(mainMenuButtonsPanel, BorderLayout.SOUTH);
     }
 
     private void setListeners() {
