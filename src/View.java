@@ -17,10 +17,24 @@ public class View {
 
     private Label paddingLabel = new Label("");
 
-    private Color outerGreen = new Color(0, 128, 0);
-    private Color innerGreen = new Color(11, 114, 41);
+    private Color outerGreen = new Color(0, 119, 32);
+    private Color innerGreen = new Color(64, 194, 64);
     private Color gray = new Color(128, 128, 128);
     private Color lightGray = new Color(226, 226, 226);
+
+    // Lista das variaveis em q os canvas de pontos se baseiam
+    private boolean p1TurnActive = false;
+    private boolean p2TurnActive = false;
+
+    private boolean p1Point1Active = false;
+    private boolean p1Point2Active = false;
+    private boolean p1Point3Active = false;
+
+    private boolean p2Point1Active = false;
+    private boolean p2Point2Active = false;
+    private boolean p2Point3Active = false;
+
+    private ArrayList<Boolean> playerPointActiveList = new ArrayList<>();
 
     // ===== Main Menu
 
@@ -66,126 +80,96 @@ public class View {
 
     // top round counter bar
     private Panel roundPointsPanelContainer = new Panel();
-    private Panel roundPointsPanel = new Panel(new GridLayout(1, 7));
+    private Panel roundPointsPanel = new Panel(new GridLayout(1, 9));
 
-    private Canvas p2Point1Canvas = new Canvas(){
-        boolean active = false;
 
+    // Indica q lado é qual char
+    private Label roundPointsPanelP1Indicator = new Label("X", 0);
+    private Label roundPointsPanelP2Indicator = new Label("O", 2);
+
+    private Label winIndicatorLabel = new Label(" - ", 1);
+
+    private Canvas p1Point1Canvas = new Canvas() {
         @Override
         public void paint(Graphics g) {
             Graphics2D g2 = (Graphics2D) g;
 
-            g2.setColor(active ? innerGreen : lightGray);
+            g2.setColor(p1Point1Active ? innerGreen : lightGray);
             g2.fillOval(0, 0, getWidth() - 1, getHeight() - 1);
 
-            g2.setColor(active ? outerGreen : gray);
+            g2.setColor(p1Point1Active ? outerGreen : gray);
             g2.setStroke(new BasicStroke(2));
             g2.drawOval(1, 1, getWidth() - 2, getHeight() - 2);
-        }
-
-        public void setActive(boolean active) {
-            this.active = active;
-            repaint();
         }
     };
-    private Canvas p1Point1Canvas = new Canvas(){
-        boolean active = false;
 
+    private Canvas p1Point2Canvas = new Canvas() {
         @Override
         public void paint(Graphics g) {
             Graphics2D g2 = (Graphics2D) g;
 
-            g2.setColor(active ? innerGreen : lightGray);
+            g2.setColor(p1Point2Active ? innerGreen : lightGray);
             g2.fillOval(0, 0, getWidth() - 1, getHeight() - 1);
 
-            g2.setColor(active ? outerGreen : gray);
+            g2.setColor(p1Point2Active ? outerGreen : gray);
             g2.setStroke(new BasicStroke(2));
             g2.drawOval(1, 1, getWidth() - 2, getHeight() - 2);
-        }
-
-        public void setActive(boolean active) {
-            this.active = active;
-            repaint();
         }
     };
-    private Canvas p1Point2Canvas = new Canvas(){
-        boolean active = false;
 
+    private Canvas p1Point3Canvas = new Canvas() {
         @Override
         public void paint(Graphics g) {
             Graphics2D g2 = (Graphics2D) g;
 
-            g2.setColor(active ? innerGreen : lightGray);
+            g2.setColor(p1Point3Active ? innerGreen : lightGray);
             g2.fillOval(0, 0, getWidth() - 1, getHeight() - 1);
 
-            g2.setColor(active ? outerGreen : gray);
+            g2.setColor(p1Point3Active ? outerGreen : gray);
             g2.setStroke(new BasicStroke(2));
             g2.drawOval(1, 1, getWidth() - 2, getHeight() - 2);
-        }
-
-        public void setActive(boolean active) {
-            this.active = active;
-            repaint();
         }
     };
-    private Canvas p2Point2Canvas = new Canvas(){
-        boolean active = false;
 
+    private Canvas p2Point1Canvas = new Canvas() {
         @Override
         public void paint(Graphics g) {
             Graphics2D g2 = (Graphics2D) g;
 
-            g2.setColor(active ? innerGreen : lightGray);
+            g2.setColor(p2Point1Active ? innerGreen : lightGray);
             g2.fillOval(0, 0, getWidth() - 1, getHeight() - 1);
 
-            g2.setColor(active ? outerGreen : gray);
+            g2.setColor(p2Point1Active ? outerGreen : gray);
             g2.setStroke(new BasicStroke(2));
             g2.drawOval(1, 1, getWidth() - 2, getHeight() - 2);
-        }
-
-        public void setActive(boolean active) {
-            this.active = active;
-            repaint();
         }
     };
-    private Canvas p1Point3Canvas = new Canvas(){
-        boolean active = false;
 
+    private Canvas p2Point2Canvas = new Canvas() {
         @Override
         public void paint(Graphics g) {
             Graphics2D g2 = (Graphics2D) g;
 
-            g2.setColor(active ? innerGreen : lightGray);
+            g2.setColor(p2Point2Active ? innerGreen : lightGray);
             g2.fillOval(0, 0, getWidth() - 1, getHeight() - 1);
 
-            g2.setColor(active ? outerGreen : gray);
+            g2.setColor(p2Point2Active ? outerGreen : gray);
             g2.setStroke(new BasicStroke(2));
             g2.drawOval(1, 1, getWidth() - 2, getHeight() - 2);
-        }
-
-        public void setActive(boolean active) {
-            this.active = active;
-            repaint();
         }
     };
-    private Canvas p2Point3Canvas = new Canvas(){
-        boolean active = false;
 
+    private Canvas p2Point3Canvas = new Canvas() {
         @Override
         public void paint(Graphics g) {
             Graphics2D g2 = (Graphics2D) g;
 
-            g2.setColor(active ? innerGreen : lightGray);
+            g2.setColor(p2Point3Active ? innerGreen : lightGray);
             g2.fillOval(0, 0, getWidth() - 1, getHeight() - 1);
 
-            g2.setColor(active ? outerGreen : gray);
+            g2.setColor(p2Point3Active ? outerGreen : gray);
             g2.setStroke(new BasicStroke(2));
             g2.drawOval(1, 1, getWidth() - 2, getHeight() - 2);
-        }
-
-        public void setActive(boolean active) {
-            this.active = active;
-            repaint();
         }
     };
 
@@ -203,24 +187,17 @@ public class View {
 
     // canvas on the left and infoLabelPenal in the center
     private Panel p1InfoPanel = new Panel(new BorderLayout());
-    private Canvas p1TurnIndicator = new Canvas(){
-        boolean active = false;
-
+    private Canvas p1TurnIndicator = new Canvas() {
         @Override
         public void paint(Graphics g) {
             Graphics2D g2 = (Graphics2D) g;
 
-            g2.setColor(active ? innerGreen : lightGray);
+            g2.setColor(p1TurnActive ? innerGreen : lightGray);
             g2.fillOval(0, 0, getWidth() - 1, getHeight() - 1);
 
-            g2.setColor(active ? outerGreen : gray);
+            g2.setColor(p1TurnActive ? outerGreen : gray);
             g2.setStroke(new BasicStroke(2));
             g2.drawOval(1, 1, getWidth() - 2, getHeight() - 2);
-        }
-
-        public void setActive(boolean active) {
-            this.active = active;
-            repaint();
         }
     };
 
@@ -231,24 +208,17 @@ public class View {
 
     // same as the p1 elements
     private Panel p2InfoPanel = new Panel(new BorderLayout());
-    private Canvas p2TurnIndicator = new Canvas(){
-        boolean active = false;
-
+    private Canvas p2TurnIndicator = new Canvas() {
         @Override
         public void paint(Graphics g) {
             Graphics2D g2 = (Graphics2D) g;
 
-            g2.setColor(active ? innerGreen : lightGray);
+            g2.setColor(p2TurnActive ? innerGreen : lightGray);
             g2.fillOval(0, 0, getWidth() - 1, getHeight() - 1);
 
-            g2.setColor(active ? outerGreen : gray);
+            g2.setColor(p2TurnActive ? outerGreen : gray);
             g2.setStroke(new BasicStroke(2));
             g2.drawOval(1, 1, getWidth() - 2, getHeight() - 2);
-        }
-
-        public void setActive(boolean active) {
-            this.active = active;
-            repaint();
         }
     };
 
@@ -260,7 +230,7 @@ public class View {
     private Button exitButton = new Button("Exit");
 
     // Game Board
-    Panel boardContainer = new Panel(new GridBagLayout()){
+    Panel boardContainer = new Panel(new GridBagLayout()) {
         @Override
         public void doLayout() {
             int size = Math.min(getWidth(), getHeight());
@@ -277,6 +247,7 @@ public class View {
             int size = Math.min(width, height);
             super.setBounds(x, y, size, size);
         }
+
         @Override
         public Dimension getPreferredSize() {
             Dimension d = super.getPreferredSize();
@@ -294,8 +265,6 @@ public class View {
     private Panel gameInfoLabelPanel = new Panel(new GridBagLayout());
 
     private Label sessionTime = new Label("Session Time: ");
-    private Label roundTime = new Label("Round Time: ");
-    private Label turnTime = new Label("Turn Time: ");
     private Label gamesPlayed = new Label("Games Played: ");
     private Label roundsPlayed = new Label("Rounds Played: ");
     private Label turnsPlayed = new Label("Turns Played: ");
@@ -371,25 +340,37 @@ public class View {
 
     private void buildGamePanel() {
 
-        playerPointCanvasList.add(p2Point1Canvas);
+        playerPointActiveList.add(p1Point1Active);
+        playerPointActiveList.add(p1Point2Active);
+        playerPointActiveList.add(p1Point3Active);
+        playerPointActiveList.add(p2Point1Active);
+        playerPointActiveList.add(p2Point2Active);
+        playerPointActiveList.add(p2Point3Active);
+
         playerPointCanvasList.add(p1Point1Canvas);
         playerPointCanvasList.add(p1Point2Canvas);
-        playerPointCanvasList.add(p2Point2Canvas);
         playerPointCanvasList.add(p1Point3Canvas);
+        playerPointCanvasList.add(p2Point1Canvas);
+        playerPointCanvasList.add(p2Point2Canvas);
         playerPointCanvasList.add(p2Point3Canvas);
 
-        for (Canvas c : playerPointCanvasList){
+        for (Canvas c : playerPointCanvasList) {
             c.setPreferredSize(new Dimension(30, 30));
             c.repaint();
         }
 
+        roundPointsPanelP1Indicator.setFont(new Font("Lexand", Font.BOLD, 14));
+        roundPointsPanelP2Indicator.setFont(new Font("Lexand", Font.BOLD, 14));
+
+        roundPointsPanel.add(roundPointsPanelP1Indicator);
         roundPointsPanel.add(p1Point1Canvas);
         roundPointsPanel.add(p1Point2Canvas);
         roundPointsPanel.add(p1Point3Canvas);
-        roundPointsPanel.add(new Label(" - ", 1));
+        roundPointsPanel.add(winIndicatorLabel);
         roundPointsPanel.add(p2Point3Canvas);
         roundPointsPanel.add(p2Point2Canvas);
         roundPointsPanel.add(p2Point1Canvas);
+        roundPointsPanel.add(roundPointsPanelP2Indicator);
 
         roundPointsPanelContainer.add(roundPointsPanel);
 
@@ -438,19 +419,15 @@ public class View {
         c0.fill = GridBagConstraints.HORIZONTAL;
         gamePlayerInfoPanel.add(exitButton, c0);
 
-        /*gamePlayerInfoPanel.add(p1InfoPanel);
-        gamePlayerInfoPanel.add(p2InfoPanel);
-        gamePlayerInfoPanel.add(exitButton);*/
 
         for (int i = 0; i < 9; i++) {
             Button b = new Button("");
+            b.setFont(new Font("Lexend", Font.BOLD, 22));
             boardButtonList.add(b);
             board.add(b);
         }
 
         gameInfoLabelList.add(sessionTime);
-        gameInfoLabelList.add(roundTime);
-        gameInfoLabelList.add(turnTime);
         gameInfoLabelList.add(gamesPlayed);
         gameInfoLabelList.add(roundsPlayed);
         gameInfoLabelList.add(turnsPlayed);
@@ -497,10 +474,6 @@ public class View {
         continueButton.setPreferredSize(buttonSize);
         exitButton.setPreferredSize(buttonSize);
 
-        /*gameContentPanel.add(gamePlayerInfoPanel);
-        gameContentPanel.add(board);
-        gameContentPanel.add(gameInfoPanel);*/
-
         GridBagConstraints bc = new GridBagConstraints();
         bc.anchor = GridBagConstraints.CENTER;
         bc.weightx = 1;
@@ -518,7 +491,6 @@ public class View {
         gamePanel.add(new Label(""), BorderLayout.SOUTH);
 
         screensPanel.add(gamePanel, "GAME");
-
     }
 
     private void setListeners() {
@@ -533,7 +505,6 @@ public class View {
     }
 
     public void changeScreen(String s) {
-        System.out.println("CHANGE SCREEN view call: " + s);
         switch (s) {
             case "MENU":
                 cardLayout.show(screensPanel, "MENU");
@@ -543,4 +514,38 @@ public class View {
                 break;
         }
     }
+
+    public void setP1TurnIndicator(boolean b) {
+        p1TurnActive = b;
+        p1TurnIndicator.repaint();
+    }
+
+    public void setP2TurnIndicator(boolean b) {
+        p2TurnActive = b;
+        p2TurnIndicator.repaint();
+    }
+
+    public void setPlayerPointCanvas(Canvas c, boolean b) {
+        if (c == p1Point1Canvas) p1Point1Active = b;
+        else if (c == p1Point2Canvas) p1Point2Active = b;
+        else if (c == p1Point3Canvas) p1Point3Active = b;
+        else if (c == p2Point1Canvas) p2Point1Active = b;
+        else if (c == p2Point2Canvas) p2Point2Active = b;
+        else if (c == p2Point3Canvas) p2Point3Active = b;
+        c.repaint();
+    }
+
+    public void setContinueButtonVisible(boolean visible) {
+        continueButton.setVisible(visible);
+        continueButton.getParent().validate();
+        continueButton.getParent().repaint();
+    }
+
+    public void validatePointsPanel() {
+        winIndicatorLabel.getParent().validate();
+        winIndicatorLabel.getParent().repaint();
+        roundPointsPanel.getParent().validate();
+        roundPointsPanel.getParent().repaint();
+    }
+
 }
