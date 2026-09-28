@@ -70,7 +70,7 @@ public class View {
     private Panel buttonGridPanel = new Panel(new GridLayout(1, 5));
     private Button playButton = new Button("Play");
 
-    private Label menuTitleLabel = new Label("Veia", 1);
+    private Label menuTitleLabel = new Label("Velha", 1);
 
 
     // ===== GAME
