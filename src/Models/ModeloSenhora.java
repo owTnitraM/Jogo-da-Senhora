@@ -101,7 +101,6 @@ public class ModeloSenhora {
 
     public void doDraw() {
         clearBoard();
-        isP1Turn = !isP1Turn;
     }
 
     public void rematch() {
