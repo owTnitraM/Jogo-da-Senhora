@@ -34,30 +34,30 @@ public class ModeloSenhora {
     }
 
     public String checkWin() {
-        if (board.get(0) == board.get(1) && board.get(1) == board.get(2)) {
+        if (board.get(0).equals(board.get(1)) && board.get(1).equals(board.get(2))) {
             return board.get(0);
         }
-        if (board.get(3) == board.get(4) && board.get(4) == board.get(5)) {
+        if (board.get(3).equals(board.get(4)) && board.get(4).equals(board.get(5))) {
             return board.get(3);
         }
-        if (board.get(6) == board.get(7) && board.get(7) == board.get(8)) {
+        if (board.get(6).equals(board.get(7)) && board.get(7).equals(board.get(8))) {
             return board.get(6);
         }
 
-        if (board.get(0) == board.get(3) && board.get(3) == board.get(6)) {
+        if (board.get(0).equals(board.get(3)) && board.get(3).equals(board.get(6))) {
             return board.get(0);
         }
-        if (board.get(1) == board.get(4) && board.get(4) == board.get(7)) {
+        if (board.get(1).equals(board.get(4)) && board.get(4).equals(board.get(7))) {
             return board.get(1);
         }
-        if (board.get(2) == board.get(5) && board.get(5) == board.get(8)) {
+        if (board.get(2).equals(board.get(5)) && board.get(5).equals(board.get(8))) {
             return board.get(2);
         }
 
-        if (board.get(0) == board.get(4) && board.get(4) == board.get(8)) {
+        if (board.get(0).equals(board.get(4)) && board.get(4).equals(board.get(8))) {
             return board.get(0);
         }
-        if (board.get(2) == board.get(4) && board.get(4) == board.get(6)) {
+        if (board.get(2).equals(board.get(4)) && board.get(4).equals(board.get(6))) {
             return board.get(2);
         }
 
