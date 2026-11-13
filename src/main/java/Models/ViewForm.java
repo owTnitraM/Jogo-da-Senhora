@@ -2,6 +2,7 @@ package Models;
 
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
+import com.intellij.uiDesigner.core.Spacer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -490,15 +491,15 @@ public class ViewForm {
         buttonGridPanel.setLayout(new GridLayoutManager(1, 5, insets(0, 0, 0, 0), 0, 0, true, false));
         bottomMenu.add(buttonGridPanel, cell(1, 0, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GROW, GROW));
 
-        buttonGridPanel.add(new JPanel(), cell(0, 0, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GROW, GROW));
-        buttonGridPanel.add(new JPanel(), cell(0, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GROW, GROW));
+        buttonGridPanel.add(new Spacer(), cell(0, 0, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GROW, GROW));
+        buttonGridPanel.add(new Spacer(), cell(0, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GROW, GROW));
 
         playButton = new JButton();
         playButton.setText("Play");
         buttonGridPanel.add(playButton, cell(0, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GROW, GROW));
 
-        buttonGridPanel.add(new JPanel(), cell(0, 3, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GROW, GROW));
-        buttonGridPanel.add(new JPanel(), cell(0, 4, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GROW, GROW));
+        buttonGridPanel.add(new Spacer(), cell(0, 3, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GROW, GROW));
+        buttonGridPanel.add(new Spacer(), cell(0, 4, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GROW, GROW));
 
         // ===== GAME
         gamePanel = new JPanel();

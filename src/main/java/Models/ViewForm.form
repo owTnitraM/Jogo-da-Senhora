@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Models.ViewForm">
-  <grid id="root" binding="root" layout-manager="CardLayout" hgap="0" vgap="0">
+  <grid id="rootPanel" binding="root" layout-manager="CardLayout" hgap="0" vgap="0">
     <constraints>
       <xy x="20" y="20" width="800" height="480"/>
     </constraints>
@@ -168,17 +168,17 @@
                 <properties/>
                 <border type="none"/>
                 <children>
-                  <hspacer id="playButtonSpacer1">
+                  <hspacer id="menuSpacer1">
                     <constraints>
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                   </hspacer>
-                  <hspacer id="playButtonSpacer2">
+                  <hspacer id="menuSpacer2">
                     <constraints>
                       <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                   </hspacer>
-                  <component id="playButton" class="javax.swing.JButton" binding="playButton" default-binding="true">
+                  <component id="playButton" class="javax.swing.JButton" binding="playButton">
                     <constraints>
                       <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -186,12 +186,12 @@
                       <text value="Play"/>
                     </properties>
                   </component>
-                  <hspacer id="playButtonSpacer3">
+                  <hspacer id="menuSpacer3">
                     <constraints>
                       <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                   </hspacer>
-                  <hspacer id="playButtonSpacer4">
+                  <hspacer id="menuSpacer4">
                     <constraints>
                       <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -453,7 +453,7 @@
                     <properties/>
                     <border type="none"/>
                     <children>
-                      <component id="boardButton1" class="javax.swing.JButton" binding="boardButton1" default-binding="true">
+                      <component id="boardButton1" class="javax.swing.JButton" binding="boardButton1">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -462,7 +462,7 @@
                           <text value=""/>
                         </properties>
                       </component>
-                      <component id="boardButton2" class="javax.swing.JButton" binding="boardButton2" default-binding="true">
+                      <component id="boardButton2" class="javax.swing.JButton" binding="boardButton2">
                         <constraints>
                           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -471,7 +471,7 @@
                           <text value=""/>
                         </properties>
                       </component>
-                      <component id="boardButton3" class="javax.swing.JButton" binding="boardButton3" default-binding="true">
+                      <component id="boardButton3" class="javax.swing.JButton" binding="boardButton3">
                         <constraints>
                           <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -480,7 +480,7 @@
                           <text value=""/>
                         </properties>
                       </component>
-                      <component id="boardButton4" class="javax.swing.JButton" binding="boardButton4" default-binding="true">
+                      <component id="boardButton4" class="javax.swing.JButton" binding="boardButton4">
                         <constraints>
                           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -489,7 +489,7 @@
                           <text value=""/>
                         </properties>
                       </component>
-                      <component id="boardButton5" class="javax.swing.JButton" binding="boardButton5" default-binding="true">
+                      <component id="boardButton5" class="javax.swing.JButton" binding="boardButton5">
                         <constraints>
                           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -498,7 +498,7 @@
                           <text value=""/>
                         </properties>
                       </component>
-                      <component id="boardButton6" class="javax.swing.JButton" binding="boardButton6" default-binding="true">
+                      <component id="boardButton6" class="javax.swing.JButton" binding="boardButton6">
                         <constraints>
                           <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -507,7 +507,7 @@
                           <text value=""/>
                         </properties>
                       </component>
-                      <component id="boardButton7" class="javax.swing.JButton" binding="boardButton7" default-binding="true">
+                      <component id="boardButton7" class="javax.swing.JButton" binding="boardButton7">
                         <constraints>
                           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -516,7 +516,7 @@
                           <text value=""/>
                         </properties>
                       </component>
-                      <component id="boardButton8" class="javax.swing.JButton" binding="boardButton8" default-binding="true">
+                      <component id="boardButton8" class="javax.swing.JButton" binding="boardButton8">
                         <constraints>
                           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                         </constraints>
@@ -525,7 +525,7 @@
                           <text value=""/>
                         </properties>
                       </component>
-                      <component id="boardButton9" class="javax.swing.JButton" binding="boardButton9" default-binding="true">
+                      <component id="boardButton9" class="javax.swing.JButton" binding="boardButton9">
                         <constraints>
                           <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                         </constraints>
