@@ -84,6 +84,15 @@ public class Controller implements ActionListener {
         modeloSenhora.setWinState(false);
         view.getWinIndicatorLabel().setText(" - ");
         view.validatePointsPanel();
+
+        // Quem comeca a partida nova pode ter mudado: atualiza os circulos de vez
+        syncTurnIndicators();
+    }
+
+    /** Reflete no topo quem e o proximo a jogar. */
+    private void syncTurnIndicators() {
+        view.setP1TurnIndicator(modeloSenhora.isP1Turn());
+        view.setP2TurnIndicator(!modeloSenhora.isP1Turn());
     }
 
     /** Executa uma acao depois de N segundos, sem bloquear a EDT. */
@@ -129,8 +138,7 @@ public class Controller implements ActionListener {
         modeloSenhora.setP1Char(view.getP1CharTextField().getText());
         modeloSenhora.setP2Char(view.getP2CharTextField().getText());
 
-        view.setP1TurnIndicator(modeloSenhora.isP1Turn() ? true : false);
-        view.setP2TurnIndicator(!modeloSenhora.isP1Turn() ? true : false);
+        syncTurnIndicators();
 
         view.getRoundPointsPanelP1Indicator().setText(modeloSenhora.getP1Char());
         view.getRoundPointsPanelP2Indicator().setText(modeloSenhora.getP2Char());
@@ -162,8 +170,7 @@ public class Controller implements ActionListener {
             view.getBoardButtonList().get(btn).setText(
                     modeloSenhora.isP1Turn() ? modeloSenhora.getP1Char() : modeloSenhora.getP2Char());
             modeloSenhora.play(btn + 1);
-            view.setP1TurnIndicator(modeloSenhora.isP1Turn() ? true : false);
-            view.setP2TurnIndicator(!modeloSenhora.isP1Turn() ? true : false);
+            syncTurnIndicators();
 
             String w = modeloSenhora.checkWin();
             if (!w.equals("")) {
@@ -193,8 +200,7 @@ public class Controller implements ActionListener {
 
             modeloSenhora.doDraw();
             resetBoardButtons();
-            view.setP1TurnIndicator(modeloSenhora.isP1Turn() ? true : false);
-            view.setP2TurnIndicator(!modeloSenhora.isP1Turn() ? true : false);
+            syncTurnIndicators();
             updateStats();
 
             roundPaused = false;
