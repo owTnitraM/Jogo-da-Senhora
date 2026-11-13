@@ -11,21 +11,9 @@ import java.awt.event.ComponentEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-/**
- * Versao Swing (GUI Designer) da tela do jogo.
- * A estrutura visual e a mesma do View.java: menu inicial + tela do jogo,
- * trocadas por um CardLayout.
- *
- * <p>Todos os componentes sao componentes padrao do Swing (JPanel, JLabel,
- * JButton, ...), sem classes extras, para que o arquivo ViewForm.form
- * continue sendo editavel no Swing UI Designer.</p>
- *
- * <p>Os antigos Canvas de pontos viraram {@link JLabel}s com um icone
- * circular gerado em memoria (ver {@link #circleIcon(int, boolean)}).</p>
- */
 public class ViewForm {
 
-    // ===== Cores dos indicadores (mesmas do View.java)
+    // ===== Cores dos indicadores
     private static final Color OUTER_GREEN = new Color(0, 119, 32);
     private static final Color INNER_GREEN = new Color(64, 194, 64);
     private static final Color GRAY = new Color(128, 128, 128);
@@ -89,7 +77,7 @@ public class ViewForm {
     private JLabel p2Point2Label;
     private JLabel p2Point3Label;
 
-    // player info (left), board (center) and game info (right)
+    // player info (left), board (center), game info (right)
     private JPanel gameContentPanel;
     private JPanel gamePlayerInfoPanel;
 
@@ -122,7 +110,7 @@ public class ViewForm {
     private JButton boardButton8;
     private JButton boardButton9;
 
-    // right container with overall info panel
+    // right container with game info panel
     private JPanel gameInfoPanel;
     private JPanel gameInfoLabelPanel;
     private JLabel sessionTime;
@@ -134,7 +122,7 @@ public class ViewForm {
 
     private JButton continueButton;
 
-    // ===== Estado da tela
+    // Listas
     private final ArrayList<JButton> boardButtonList = new ArrayList<>();
     private final ArrayList<JLabel> playerPointLabels = new ArrayList<>();
 
@@ -143,14 +131,14 @@ public class ViewForm {
     }
 
     public ViewForm(int windowWidth, int windowHeight) {
-        $$$setupUI$$$();
-        registerComponents();
+        setupUI();
+        addComponents();
         if (!GraphicsEnvironment.isHeadless()) {
             buildFrame(windowWidth, windowHeight);
         }
     }
 
-    private void registerComponents() {
+    private void addComponents() {
         boardButtonList.add(boardButton1);
         boardButtonList.add(boardButton2);
         boardButtonList.add(boardButton3);
@@ -184,7 +172,7 @@ public class ViewForm {
 
         sameCharWarningLabel.setForeground(Color.RED);
 
-        // Tabuleiro sempre quadrado, como no View.java
+        // Dimensoes da board
         board.setPreferredSize(new Dimension(330, 330));
         boardContainer.addComponentListener(new ComponentAdapter() {
             @Override
@@ -203,10 +191,7 @@ public class ViewForm {
         }
     }
 
-    /**
-     * Desenha o circulo de ponto/vez: verde quando ativo, cinza quando inativo.
-     * (Era o paint() dos Canvas anonimos do View.java.)
-     */
+    // Mudança dos canvas antigo com metodo de paint pra um image icon proprio
     private static ImageIcon circleIcon(int size, boolean active) {
         BufferedImage image = new BufferedImage(size, size, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = image.createGraphics();
@@ -278,7 +263,7 @@ public class ViewForm {
         }
     }
 
-    // ===== Getters (substituem o @Getter do View.java)
+    // ===== Getters
 
     public JFrame getFrame() {
         return frame;
@@ -380,7 +365,7 @@ public class ViewForm {
         return p2RoundsWon;
     }
 
-    // ===== Helpers usados pelo codigo gerado
+    // ===== Helpers
 
     private static GridConstraints cell(int row, int column, int anchor, int fill, int hSizePolicy, int vSizePolicy) {
         return new GridConstraints(row, column, 1, 1, anchor, fill,
@@ -400,7 +385,7 @@ public class ViewForm {
         return new Insets(top, left, bottom, right);
     }
 
-    private void $$$setupUI$$$() {
+    private void setupUI() {
         root = new JPanel();
         root.setLayout(new CardLayout(0, 0));
 
@@ -601,7 +586,7 @@ public class ViewForm {
         p2ScoreLabel.setText("Score: 0");
         p2InfoLabelPanel.add(p2ScoreLabel, cell(1, 0, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GROW, FIXED));
 
-        // Empurra o botao Exit para o fim do painel
+        // Coloca o botao de sair em baixo
         gamePlayerInfoPanel.add(new JPanel(), new GridBagConstraints(0, 2, 1, 1, 1.0, 1.0, GridBagConstraints.CENTER, GridBagConstraints.VERTICAL, insets(2, 5, 2, 5), 0, 0));
 
         exitButton = new JButton();
@@ -637,7 +622,7 @@ public class ViewForm {
         board.add(boardButton8, cell(2, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GROW, GROW));
         board.add(boardButton9, cell(2, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GROW, GROW));
 
-        // ----- Right: overall info + continue
+        // Painel direito com as infos do jogo
         gameInfoPanel = new JPanel();
         gameInfoPanel.setLayout(new GridBagLayout());
         gameContentPanel.add(gameInfoPanel, BorderLayout.EAST);

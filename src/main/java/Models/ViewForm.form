@@ -320,7 +320,7 @@
                   <grid id="p1InfoPanel" binding="p1InfoPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
                     <constraints>
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                      <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="0.0" ipadx="0" ipady="0"/>
+                      <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="0.0"/>
                     </constraints>
                     <properties/>
                     <border type="none"/>
@@ -331,11 +331,7 @@
                         <border type="none"/>
                         <children>
                           <component id="p1TurnIndicator" class="javax.swing.JLabel" binding="p1TurnIndicator">
-                            <constraints>
-                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                <preferred-size width="25" height="25"/>
-                              </grid>
-                            </constraints>
+                            <constraints/>
                             <properties/>
                           </component>
                         </children>
@@ -371,7 +367,7 @@
                   <grid id="p2InfoPanel" binding="p2InfoPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
                     <constraints>
                       <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                      <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="0.0" ipadx="0" ipady="0"/>
+                      <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="0.0"/>
                     </constraints>
                     <properties/>
                     <border type="none"/>
@@ -382,11 +378,7 @@
                         <border type="none"/>
                         <children>
                           <component id="p2TurnIndicator" class="javax.swing.JLabel" binding="p2TurnIndicator">
-                            <constraints>
-                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                                <preferred-size width="25" height="25"/>
-                              </grid>
-                            </constraints>
+                            <constraints/>
                             <properties/>
                           </component>
                         </children>
@@ -422,7 +414,7 @@
                   <component id="gamePlayerInfoSpacer" class="javax.swing.JPanel">
                     <constraints>
                       <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-                      <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="1.0" ipadx="0" ipady="0"/>
+                      <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="1.0"/>
                     </constraints>
                     <properties/>
                   </component>
@@ -431,7 +423,7 @@
                       <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="125" height="40"/>
                       </grid>
-                      <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="0.0" ipadx="0" ipady="0"/>
+                      <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="0.0"/>
                     </constraints>
                     <properties>
                       <text value="Exit"/>
@@ -448,14 +440,14 @@
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                      <gridbag top="0" left="0" bottom="0" right="0" weightx="1.0" weighty="1.0" ipadx="0" ipady="0"/>
+                      <gridbag weightx="1.0" weighty="1.0"/>
                     </constraints>
                     <properties/>
-                    <border type="none"/>
+               javax.swing.JPanel
                     <children>
                       <component id="boardButton1" class="javax.swing.JButton" binding="boardButton1">
                         <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policyjavax.swing.JPanel"3" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <font name="Lexend" size="22" style="1"/>
@@ -546,7 +538,7 @@
                   <grid id="gameInfoLabelPanel" binding="gameInfoLabelPanel" layout-manager="GridBagLayout">
                     <constraints>
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="5" fill="3" indent="0" use-parent-layout="false"/>
-                      <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="2.0" ipadx="0" ipady="0"/>
+                      <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="2.0"/>
                     </constraints>
                     <properties/>
                     <border type="none"/>
@@ -554,7 +546,7 @@
                       <component id="sessionTime" class="javax.swing.JLabel" binding="sessionTime">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
-                          <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="0.0" ipadx="0" ipady="0"/>
+                          <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="0.0"/>
                         </constraints>
                         <properties>
                           <horizontalAlignment value="4"/>
@@ -564,7 +556,7 @@
                       <component id="gamesPlayed" class="javax.swing.JLabel" binding="gamesPlayed">
                         <constraints>
                           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
-                          <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="0.0" ipadx="0" ipady="0"/>
+                          <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="0.0"/>
                         </constraints>
                         <properties>
                           <horizontalAlignment value="4"/>
@@ -574,7 +566,7 @@
                       <component id="roundsPlayed" class="javax.swing.JLabel" binding="roundsPlayed">
                         <constraints>
                           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
-                          <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="0.0" ipadx="0" ipady="0"/>
+                          <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="0.0"/>
                         </constraints>
                         <properties>
                           <horizontalAlignment value="4"/>
@@ -584,7 +576,7 @@
                       <component id="turnsPlayed" class="javax.swing.JLabel" binding="turnsPlayed">
                         <constraints>
                           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
-                          <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="0.0" ipadx="0" ipady="0"/>
+                          <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="0.0"/>
                         </constraints>
                         <properties>
                           <horizontalAlignment value="4"/>
@@ -594,7 +586,7 @@
                       <component id="p1RoundsWon" class="javax.swing.JLabel" binding="p1RoundsWon">
                         <constraints>
                           <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
-                          <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="0.0" ipadx="0" ipady="0"/>
+                          <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="0.0"/>
                         </constraints>
                         <properties>
                           <horizontalAlignment value="4"/>
@@ -604,7 +596,7 @@
                       <component id="p2RoundsWon" class="javax.swing.JLabel" binding="p2RoundsWon">
                         <constraints>
                           <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
-                          <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="0.0" ipadx="0" ipady="0"/>
+                          <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="0.0"/>
                         </constraints>
                         <properties>
                           <horizontalAlignment value="4"/>
@@ -614,7 +606,7 @@
                       <component id="gameInfoSpacer" class="javax.swing.JPanel">
                         <constraints>
                           <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-                          <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="1.0" ipadx="0" ipady="0"/>
+                          <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="1.0"/>
                         </constraints>
                         <properties/>
                       </component>
@@ -625,7 +617,7 @@
                       <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
                         <preferred-size width="125" height="40"/>
                       </grid>
-                      <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="1.0" ipadx="0" ipady="0"/>
+                      <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="1.0"/>
                     </constraints>
                     <properties>
                       <text value="Continue"/>

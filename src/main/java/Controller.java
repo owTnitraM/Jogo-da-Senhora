@@ -111,15 +111,17 @@ public class Controller implements ActionListener {
     }
 
     private void handlePlayButton() {
-        if ((view.getP1CharTextField().getText().equals("")) || (view.getP2CharTextField().getText().equals(""))) {
+        String p1c = view.getP1CharTextField().getText().trim();
+        String p2c = view.getP2CharTextField().getText().trim();
+        if ((p1c.equals("")) || (p2c.equals(""))) {
             view.getSameCharWarningLabel().setText("Char cannot be empty.");
             return;
         }
-        if (view.getP1CharTextField().getText().equals(view.getP2CharTextField().getText())) {
+        if (p1c.equals(p2c)) {
             view.getSameCharWarningLabel().setText("Char cannot be the same.");
             return;
         }
-        if ((view.getP1CharTextField().getText().length() > 3 || (view.getP2CharTextField().getText().length() > 3))) {
+        if ((p1c.length() > 3 || (p2c.length() > 3))) {
             view.getSameCharWarningLabel().setText("Char max length is 3.");
             return;
         }
