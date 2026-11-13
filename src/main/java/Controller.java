@@ -1,6 +1,5 @@
 import Models.ModeloSenhora;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.Setter;
 
 import java.awt.event.ActionEvent;
