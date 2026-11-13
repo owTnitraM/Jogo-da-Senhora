@@ -1,4 +1,5 @@
 import Models.ModeloSenhora;
+import Models.ViewForm;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,14 +14,14 @@ import java.util.TimerTask;
 @Setter
 public class Controller implements ActionListener {
     private final ModeloSenhora modeloSenhora;
-    private final View view;
+    private final ViewForm view;
     private final Timer timer = new Timer();
     private final int sleepTime = 1;
     private int sessionSeconds = 0;
 
     public Controller() {
         this.modeloSenhora = new ModeloSenhora();
-        this.view = new View();
+        this.view = new ViewForm();
         setTimer();
         setActionEvents();
         view.changeScreen("MENU");
@@ -28,7 +29,7 @@ public class Controller implements ActionListener {
 
     public Controller(int width, int height) {
         this.modeloSenhora = new ModeloSenhora();
-        this.view = new View(width, height);
+        this.view = new ViewForm(width, height);
         setTimer();
         setActionEvents();
         view.changeScreen("MENU");
@@ -62,7 +63,7 @@ public class Controller implements ActionListener {
         modeloSenhora.reset();
 
         for (int i = 0; i < view.getBoardButtonList().toArray().length; i++) {
-            view.getBoardButtonList().get(i).setLabel("");
+            view.getBoardButtonList().get(i).setText("");
         }
         resetTopBar();
     }
@@ -130,8 +131,8 @@ public class Controller implements ActionListener {
 
     private void handleBoardPress(int btn) {
         if (modeloSenhora.isWinState()) return;
-        if (view.getBoardButtonList().get(btn).getLabel().equals("")) {
-            view.getBoardButtonList().get(btn).setLabel(
+        if (view.getBoardButtonList().get(btn).getText().equals("")) {
+            view.getBoardButtonList().get(btn).setText(
                     modeloSenhora.isP1Turn() ? modeloSenhora.getP1Char() : modeloSenhora.getP2Char());
             modeloSenhora.play(btn + 1);
             view.setP1TurnIndicator(modeloSenhora.isP1Turn() ? true : false);
@@ -201,7 +202,7 @@ public class Controller implements ActionListener {
 
     private void resetBoardButtons() {
         for (int i = 0; i < 9; i++) {
-            view.getBoardButtonList().get(i).setLabel("");
+            view.getBoardButtonList().get(i).setText("");
         }
     }
 

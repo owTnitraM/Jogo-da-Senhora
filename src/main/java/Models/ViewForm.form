@@ -1,164 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Models.ViewForm">
-  <grid id="27dc6" binding="root" layout-manager="CardLayout" hgap="0" vgap="0">
+  <grid id="root" binding="root" layout-manager="CardLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="20" y="20" width="814" height="400"/>
+      <xy x="20" y="20" width="800" height="480"/>
     </constraints>
     <properties/>
     <border type="none"/>
     <children>
-      <grid id="92678" binding="menuPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+      <grid id="menuPanel" binding="menuPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
         <constraints>
           <card name="MENU"/>
         </constraints>
         <properties/>
         <border type="none"/>
         <children>
-          <grid id="8c26b" binding="bottomMenu" layout-manager="GridLayoutManager" row-count="2" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-            <margin top="0" left="0" bottom="0" right="0"/>
-            <constraints border-constraint="South"/>
-            <properties/>
-            <border type="none"/>
-            <children>
-              <component id="132b5" class="javax.swing.JButton" binding="playButton" default-binding="true">
-                <constraints>
-                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="Play"/>
-                </properties>
-              </component>
-              <hspacer id="ef859">
-                <constraints>
-                  <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-              </hspacer>
-              <hspacer id="7b41a">
-                <constraints>
-                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-              </hspacer>
-              <hspacer id="968c6">
-                <constraints>
-                  <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-              </hspacer>
-              <hspacer id="3052d">
-                <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-              </hspacer>
-              <grid id="d43f7" binding="p1NameSelectPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                <margin top="0" left="0" bottom="0" right="0"/>
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties/>
-                <border type="none"/>
-                <children>
-                  <component id="fb979" class="javax.swing.JLabel" binding="p1NameInputLabel">
-                    <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value="Name:"/>
-                    </properties>
-                  </component>
-                  <component id="1c86" class="javax.swing.JTextField" binding="p1NameTextField">
-                    <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties/>
-                  </component>
-                </children>
-              </grid>
-              <grid id="31f5b" binding="p1CharSelectPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                <margin top="0" left="0" bottom="0" right="0"/>
-                <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties/>
-                <border type="none"/>
-                <children>
-                  <component id="c00db" class="javax.swing.JLabel" binding="p1CharInputLabel">
-                    <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value="P1 char:"/>
-                    </properties>
-                  </component>
-                  <component id="910b5" class="javax.swing.JTextField" binding="p1CharTextField">
-                    <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties>
-                      <text value="X"/>
-                    </properties>
-                  </component>
-                </children>
-              </grid>
-              <grid id="6aff5" binding="p2CharSelectPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                <margin top="0" left="0" bottom="0" right="0"/>
-                <constraints>
-                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties/>
-                <border type="none"/>
-                <children>
-                  <component id="ef104" class="javax.swing.JLabel" binding="p2CharInputLabel">
-                    <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value="P2 char:"/>
-                    </properties>
-                  </component>
-                  <component id="606ee" class="javax.swing.JTextField" binding="p2CharTextField">
-                    <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties>
-                      <text value="O"/>
-                    </properties>
-                  </component>
-                </children>
-              </grid>
-              <grid id="9a5b0" binding="p2NameSelectPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                <margin top="0" left="0" bottom="0" right="0"/>
-                <constraints>
-                  <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties/>
-                <border type="none"/>
-                <children>
-                  <component id="7d7f5" class="javax.swing.JLabel" binding="p2NameInputLabel">
-                    <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value="Name:"/>
-                    </properties>
-                  </component>
-                  <component id="7b80d" class="javax.swing.JTextField" binding="p2NameTextField">
-                    <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties/>
-                  </component>
-                </children>
-              </grid>
-            </children>
-          </grid>
-          <component id="25774" class="javax.swing.JLabel" binding="menuTitleLabel">
+          <component id="menuTitleLabel" class="javax.swing.JLabel" binding="menuTitleLabel">
             <constraints border-constraint="Center"/>
             <properties>
               <horizontalAlignment value="0"/>
@@ -166,43 +22,618 @@
               <text value="Velha"/>
             </properties>
           </component>
+          <grid id="bottomMenu" binding="bottomMenu" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="true" hgap="0" vgap="0">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints border-constraint="South"/>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <grid id="menuPlayerInfoPanel" binding="menuPlayerInfoPanel" layout-manager="GridLayoutManager" row-count="1" column-count="5" same-size-horizontally="true" same-size-vertically="false" hgap="0" vgap="0">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <grid id="p1NameSelectPanel" binding="p1NameSelectPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="true" hgap="0" vgap="0">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="p1NameInputLabel" class="javax.swing.JLabel" binding="p1NameInputLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <horizontalAlignment value="2"/>
+                          <text value="Name:"/>
+                        </properties>
+                      </component>
+                      <component id="p1NameTextField" class="javax.swing.JTextField" binding="p1NameTextField">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties/>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="p1CharSelectPanel" binding="p1CharSelectPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="true" hgap="0" vgap="0">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="p1CharInputLabel" class="javax.swing.JLabel" binding="p1CharInputLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <horizontalAlignment value="2"/>
+                          <text value="P1 character:"/>
+                        </properties>
+                      </component>
+                      <component id="p1CharTextField" class="javax.swing.JTextField" binding="p1CharTextField">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <text value="X"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <component id="sameCharWarningLabel" class="javax.swing.JLabel" binding="sameCharWarningLabel">
+                    <constraints>
+                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <foreground color="-65536"/>
+                      <horizontalAlignment value="0"/>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                  <grid id="p2CharSelectPanel" binding="p2CharSelectPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="true" hgap="0" vgap="0">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="p2CharInputLabel" class="javax.swing.JLabel" binding="p2CharInputLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <horizontalAlignment value="2"/>
+                          <text value="P2 character:"/>
+                        </properties>
+                      </component>
+                      <component id="p2CharTextField" class="javax.swing.JTextField" binding="p2CharTextField">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <text value="O"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="p2NameSelectPanel" binding="p2NameSelectPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="true" hgap="0" vgap="0">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="p2NameInputLabel" class="javax.swing.JLabel" binding="p2NameInputLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <horizontalAlignment value="2"/>
+                          <text value="Name:"/>
+                        </properties>
+                      </component>
+                      <component id="p2NameTextField" class="javax.swing.JTextField" binding="p2NameTextField">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties/>
+                      </component>
+                    </children>
+                  </grid>
+                </children>
+              </grid>
+              <grid id="buttonGridPanel" binding="buttonGridPanel" layout-manager="GridLayoutManager" row-count="1" column-count="5" same-size-horizontally="true" same-size-vertically="false" hgap="0" vgap="0">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <hspacer id="playButtonSpacer1">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </hspacer>
+                  <hspacer id="playButtonSpacer2">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </hspacer>
+                  <component id="playButton" class="javax.swing.JButton" binding="playButton" default-binding="true">
+                    <constraints>
+                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Play"/>
+                    </properties>
+                  </component>
+                  <hspacer id="playButtonSpacer3">
+                    <constraints>
+                      <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </hspacer>
+                  <hspacer id="playButtonSpacer4">
+                    <constraints>
+                      <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </hspacer>
+                </children>
+              </grid>
+            </children>
+          </grid>
         </children>
       </grid>
-      <grid id="849b" binding="gamePanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+      <grid id="gamePanel" binding="gamePanel" layout-manager="BorderLayout" hgap="0" vgap="0">
         <constraints>
           <card name="GAME"/>
         </constraints>
         <properties/>
         <border type="none"/>
         <children>
-          <grid id="a018e" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-            <margin top="0" left="0" bottom="0" right="0"/>
+          <grid id="roundPointsPanelContainer" binding="roundPointsPanelContainer" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
             <constraints border-constraint="North"/>
             <properties/>
             <border type="none"/>
-            <children/>
-          </grid>
-          <grid id="e0372" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-            <margin top="0" left="0" bottom="0" right="0"/>
-            <constraints border-constraint="South"/>
-            <properties/>
-            <border type="none"/>
             <children>
-              <component id="84bb0" class="javax.swing.JLabel">
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value=""/>
-                </properties>
-              </component>
+              <grid id="roundPointsPanel" binding="roundPointsPanel" layout-manager="GridLayoutManager" row-count="1" column-count="9" same-size-horizontally="true" same-size-vertically="false" hgap="0" vgap="0">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints/>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="roundPointsPanelP1Indicator" class="javax.swing.JLabel" binding="roundPointsPanelP1Indicator">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Lexend" size="14" style="1"/>
+                      <horizontalAlignment value="2"/>
+                      <text value="X"/>
+                    </properties>
+                  </component>
+                  <component id="p1Point1Canvas" class="Models.PointIndicator" binding="p1Point1Canvas">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="30" height="30"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="p1Point2Canvas" class="Models.PointIndicator" binding="p1Point2Canvas">
+                    <constraints>
+                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="30" height="30"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="p1Point3Canvas" class="Models.PointIndicator" binding="p1Point3Canvas">
+                    <constraints>
+                      <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="30" height="30"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="winIndicatorLabel" class="javax.swing.JLabel" binding="winIndicatorLabel">
+                    <constraints>
+                      <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <horizontalAlignment value="0"/>
+                      <text value=" - "/>
+                    </properties>
+                  </component>
+                  <component id="p2Point3Canvas" class="Models.PointIndicator" binding="p2Point3Canvas">
+                    <constraints>
+                      <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="30" height="30"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="p2Point2Canvas" class="Models.PointIndicator" binding="p2Point2Canvas">
+                    <constraints>
+                      <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="30" height="30"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="p2Point1Canvas" class="Models.PointIndicator" binding="p2Point1Canvas">
+                    <constraints>
+                      <grid row="0" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="30" height="30"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="roundPointsPanelP2Indicator" class="javax.swing.JLabel" binding="roundPointsPanelP2Indicator">
+                    <constraints>
+                      <grid row="0" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Lexend" size="14" style="1"/>
+                      <horizontalAlignment value="4"/>
+                      <text value="O"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
             </children>
           </grid>
-          <grid id="e1fda" layout-manager="GridBagLayout">
+          <component id="gamePaddingLabel" class="javax.swing.JLabel">
+            <constraints border-constraint="South"/>
+            <properties>
+              <text value=""/>
+            </properties>
+          </component>
+          <grid id="gameContentPanel" binding="gameContentPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints border-constraint="Center"/>
             <properties/>
             <border type="none"/>
-            <children/>
+            <children>
+              <grid id="gamePlayerInfoPanel" binding="gamePlayerInfoPanel" layout-manager="GridBagLayout">
+                <constraints border-constraint="West"/>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <grid id="p1InfoPanel" binding="p1InfoPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="0.0" ipadx="0" ipady="0"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <grid id="p1TurnIndicatorContainer" binding="p1TurnIndicatorContainer" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+                        <constraints border-constraint="West"/>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <component id="p1TurnIndicator" class="Models.PointIndicator" binding="p1TurnIndicator">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                <preferred-size width="25" height="25"/>
+                              </grid>
+                            </constraints>
+                            <properties/>
+                          </component>
+                        </children>
+                      </grid>
+                      <grid id="p1InfoLabelPanel" binding="p1InfoLabelPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="true" hgap="0" vgap="0">
+                        <margin top="0" left="0" bottom="0" right="0"/>
+                        <constraints border-constraint="Center"/>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <component id="p1NameLabel" class="javax.swing.JLabel" binding="p1NameLabel">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <horizontalAlignment value="2"/>
+                              <text value="P1 - null"/>
+                            </properties>
+                          </component>
+                          <component id="p1ScoreLabel" class="javax.swing.JLabel" binding="p1ScoreLabel">
+                            <constraints>
+                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <horizontalAlignment value="2"/>
+                              <text value="Score: 0"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                    </children>
+                  </grid>
+                  <grid id="p2InfoPanel" binding="p2InfoPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="0.0" ipadx="0" ipady="0"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <grid id="p2TurnIndicatorContainer" binding="p2TurnIndicatorContainer" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+                        <constraints border-constraint="West"/>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <component id="p2TurnIndicator" class="Models.PointIndicator" binding="p2TurnIndicator">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                                <preferred-size width="25" height="25"/>
+                              </grid>
+                            </constraints>
+                            <properties/>
+                          </component>
+                        </children>
+                      </grid>
+                      <grid id="p2InfoLabelPanel" binding="p2InfoLabelPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="true" hgap="0" vgap="0">
+                        <margin top="0" left="0" bottom="0" right="0"/>
+                        <constraints border-constraint="Center"/>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <component id="p2NameLabel" class="javax.swing.JLabel" binding="p2NameLabel">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <horizontalAlignment value="2"/>
+                              <text value="P2 - null"/>
+                            </properties>
+                          </component>
+                          <component id="p2ScoreLabel" class="javax.swing.JLabel" binding="p2ScoreLabel">
+                            <constraints>
+                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <horizontalAlignment value="2"/>
+                              <text value="Score: 0"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                    </children>
+                  </grid>
+                  <component id="gamePlayerInfoSpacer" class="javax.swing.JPanel">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                      <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="1.0" ipadx="0" ipady="0"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="exitButton" class="javax.swing.JButton" binding="exitButton">
+                    <constraints>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="125" height="40"/>
+                      </grid>
+                      <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="0.0" ipadx="0" ipady="0"/>
+                    </constraints>
+                    <properties>
+                      <text value="Exit"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="boardContainer" class="Models.BoardContainerPanel" binding="boardContainer" layout-manager="GridBagLayout">
+                <constraints border-constraint="Center"/>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <grid id="board" class="Models.SquareBoardPanel" binding="board" layout-manager="GridLayoutManager" row-count="3" column-count="3" same-size-horizontally="true" same-size-vertically="true" hgap="0" vgap="0">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                      <gridbag top="0" left="0" bottom="0" right="0" weightx="1.0" weighty="1.0" ipadx="0" ipady="0"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="boardButton1" class="javax.swing.JButton" binding="boardButton1" default-binding="true">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font name="Lexend" size="22" style="1"/>
+                          <text value=""/>
+                        </properties>
+                      </component>
+                      <component id="boardButton2" class="javax.swing.JButton" binding="boardButton2" default-binding="true">
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font name="Lexend" size="22" style="1"/>
+                          <text value=""/>
+                        </properties>
+                      </component>
+                      <component id="boardButton3" class="javax.swing.JButton" binding="boardButton3" default-binding="true">
+                        <constraints>
+                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font name="Lexend" size="22" style="1"/>
+                          <text value=""/>
+                        </properties>
+                      </component>
+                      <component id="boardButton4" class="javax.swing.JButton" binding="boardButton4" default-binding="true">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font name="Lexend" size="22" style="1"/>
+                          <text value=""/>
+                        </properties>
+                      </component>
+                      <component id="boardButton5" class="javax.swing.JButton" binding="boardButton5" default-binding="true">
+                        <constraints>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font name="Lexend" size="22" style="1"/>
+                          <text value=""/>
+                        </properties>
+                      </component>
+                      <component id="boardButton6" class="javax.swing.JButton" binding="boardButton6" default-binding="true">
+                        <constraints>
+                          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font name="Lexend" size="22" style="1"/>
+                          <text value=""/>
+                        </properties>
+                      </component>
+                      <component id="boardButton7" class="javax.swing.JButton" binding="boardButton7" default-binding="true">
+                        <constraints>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font name="Lexend" size="22" style="1"/>
+                          <text value=""/>
+                        </properties>
+                      </component>
+                      <component id="boardButton8" class="javax.swing.JButton" binding="boardButton8" default-binding="true">
+                        <constraints>
+                          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font name="Lexend" size="22" style="1"/>
+                          <text value=""/>
+                        </properties>
+                      </component>
+                      <component id="boardButton9" class="javax.swing.JButton" binding="boardButton9" default-binding="true">
+                        <constraints>
+                          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font name="Lexend" size="22" style="1"/>
+                          <text value=""/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                </children>
+              </grid>
+              <grid id="gameInfoPanel" binding="gameInfoPanel" layout-manager="GridBagLayout">
+                <constraints border-constraint="East"/>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <grid id="gameInfoLabelPanel" binding="gameInfoLabelPanel" layout-manager="GridBagLayout">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="5" fill="3" indent="0" use-parent-layout="false"/>
+                      <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="2.0" ipadx="0" ipady="0"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="sessionTime" class="javax.swing.JLabel" binding="sessionTime">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="0.0" ipadx="0" ipady="0"/>
+                        </constraints>
+                        <properties>
+                          <horizontalAlignment value="4"/>
+                          <text value="Session Time: "/>
+                        </properties>
+                      </component>
+                      <component id="gamesPlayed" class="javax.swing.JLabel" binding="gamesPlayed">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="0.0" ipadx="0" ipady="0"/>
+                        </constraints>
+                        <properties>
+                          <horizontalAlignment value="4"/>
+                          <text value="Games Played: "/>
+                        </properties>
+                      </component>
+                      <component id="roundsPlayed" class="javax.swing.JLabel" binding="roundsPlayed">
+                        <constraints>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="0.0" ipadx="0" ipady="0"/>
+                        </constraints>
+                        <properties>
+                          <horizontalAlignment value="4"/>
+                          <text value="Rounds Played: "/>
+                        </properties>
+                      </component>
+                      <component id="turnsPlayed" class="javax.swing.JLabel" binding="turnsPlayed">
+                        <constraints>
+                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="0.0" ipadx="0" ipady="0"/>
+                        </constraints>
+                        <properties>
+                          <horizontalAlignment value="4"/>
+                          <text value="Turns Played: "/>
+                        </properties>
+                      </component>
+                      <component id="p1RoundsWon" class="javax.swing.JLabel" binding="p1RoundsWon">
+                        <constraints>
+                          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="0.0" ipadx="0" ipady="0"/>
+                        </constraints>
+                        <properties>
+                          <horizontalAlignment value="4"/>
+                          <text value="P1 Rounds Won: "/>
+                        </properties>
+                      </component>
+                      <component id="p2RoundsWon" class="javax.swing.JLabel" binding="p2RoundsWon">
+                        <constraints>
+                          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
+                          <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="0.0" ipadx="0" ipady="0"/>
+                        </constraints>
+                        <properties>
+                          <horizontalAlignment value="4"/>
+                          <text value="P2 Rounds Won: "/>
+                        </properties>
+                      </component>
+                      <component id="gameInfoSpacer" class="javax.swing.JPanel">
+                        <constraints>
+                          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                          <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="1.0" ipadx="0" ipady="0"/>
+                        </constraints>
+                        <properties/>
+                      </component>
+                    </children>
+                  </grid>
+                  <component id="continueButton" class="javax.swing.JButton" binding="continueButton">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                        <preferred-size width="125" height="40"/>
+                      </grid>
+                      <gridbag top="2" left="5" bottom="2" right="5" weightx="1.0" weighty="1.0" ipadx="0" ipady="0"/>
+                    </constraints>
+                    <properties>
+                      <text value="Continue"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+            </children>
           </grid>
         </children>
       </grid>
