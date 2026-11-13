@@ -602,7 +602,9 @@ public class ViewForm {
         p2InfoLabelPanel.add(p2ScoreLabel, cell(1, 0, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GROW, FIXED));
 
         // Empurra o botao Exit para o fim do painel
-        gamePlayerInfoPanel.add(new JPanel(), new GridBagConstraints(0, 2, 1, 1, 1.0, 1.0, GridBagConstraints.CENTER, GridBagConstraints.VERTICAL, insets(2, 5, 2, 5), 0, 0));
+        JPanel gamePlayerInfoSpacer = new JPanel();
+        gamePlayerInfoSpacer.setLayout(new BorderLayout(0, 0));
+        gamePlayerInfoPanel.add(gamePlayerInfoSpacer, new GridBagConstraints(0, 2, 1, 1, 1.0, 1.0, GridBagConstraints.CENTER, GridBagConstraints.VERTICAL, insets(2, 5, 2, 5), 0, 0));
 
         exitButton = new JButton();
         exitButton.setText("Exit");
@@ -676,7 +678,9 @@ public class ViewForm {
         p2RoundsWon.setText("P2 Rounds Won: ");
         gameInfoLabelPanel.add(p2RoundsWon, new GridBagConstraints(0, 5, 1, 1, 1.0, 0.0, GridBagConstraints.NORTHEAST, GridBagConstraints.NONE, insets(2, 5, 2, 5), 0, 0));
 
-        gameInfoLabelPanel.add(new JPanel(), new GridBagConstraints(0, 6, 1, 1, 1.0, 1.0, GridBagConstraints.CENTER, GridBagConstraints.VERTICAL, insets(2, 5, 2, 5), 0, 0));
+        JPanel gameInfoSpacer = new JPanel();
+        gameInfoSpacer.setLayout(new BorderLayout(0, 0));
+        gameInfoLabelPanel.add(gameInfoSpacer, new GridBagConstraints(0, 6, 1, 1, 1.0, 1.0, GridBagConstraints.CENTER, GridBagConstraints.VERTICAL, insets(2, 5, 2, 5), 0, 0));
 
         continueButton = new JButton();
         continueButton.setText("Continue");
