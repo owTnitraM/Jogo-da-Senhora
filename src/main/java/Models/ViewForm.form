@@ -230,7 +230,7 @@
                       <text value="X"/>
                     </properties>
                   </component>
-                  <component id="p1Point1Canvas" class="Models.PointIndicator" binding="p1Point1Canvas">
+                  <component id="p1Point1Label" class="javax.swing.JLabel" binding="p1Point1Label">
                     <constraints>
                       <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="30" height="30"/>
@@ -238,7 +238,7 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="p1Point2Canvas" class="Models.PointIndicator" binding="p1Point2Canvas">
+                  <component id="p1Point2Label" class="javax.swing.JLabel" binding="p1Point2Label">
                     <constraints>
                       <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="30" height="30"/>
@@ -246,7 +246,7 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="p1Point3Canvas" class="Models.PointIndicator" binding="p1Point3Canvas">
+                  <component id="p1Point3Label" class="javax.swing.JLabel" binding="p1Point3Label">
                     <constraints>
                       <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="30" height="30"/>
@@ -263,7 +263,7 @@
                       <text value=" - "/>
                     </properties>
                   </component>
-                  <component id="p2Point3Canvas" class="Models.PointIndicator" binding="p2Point3Canvas">
+                  <component id="p2Point3Label" class="javax.swing.JLabel" binding="p2Point3Label">
                     <constraints>
                       <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="30" height="30"/>
@@ -271,7 +271,7 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="p2Point2Canvas" class="Models.PointIndicator" binding="p2Point2Canvas">
+                  <component id="p2Point2Label" class="javax.swing.JLabel" binding="p2Point2Label">
                     <constraints>
                       <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="30" height="30"/>
@@ -279,7 +279,7 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="p2Point1Canvas" class="Models.PointIndicator" binding="p2Point1Canvas">
+                  <component id="p2Point1Label" class="javax.swing.JLabel" binding="p2Point1Label">
                     <constraints>
                       <grid row="0" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                         <preferred-size width="30" height="30"/>
@@ -330,7 +330,7 @@
                         <properties/>
                         <border type="none"/>
                         <children>
-                          <component id="p1TurnIndicator" class="Models.PointIndicator" binding="p1TurnIndicator">
+                          <component id="p1TurnIndicator" class="javax.swing.JLabel" binding="p1TurnIndicator">
                             <constraints>
                               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
                                 <preferred-size width="25" height="25"/>
@@ -381,7 +381,7 @@
                         <properties/>
                         <border type="none"/>
                         <children>
-                          <component id="p2TurnIndicator" class="Models.PointIndicator" binding="p2TurnIndicator">
+                          <component id="p2TurnIndicator" class="javax.swing.JLabel" binding="p2TurnIndicator">
                             <constraints>
                               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
                                 <preferred-size width="25" height="25"/>
@@ -439,12 +439,12 @@
                   </component>
                 </children>
               </grid>
-              <grid id="boardContainer" class="Models.BoardContainerPanel" binding="boardContainer" layout-manager="GridBagLayout">
+              <grid id="boardContainer" binding="boardContainer" layout-manager="GridBagLayout">
                 <constraints border-constraint="Center"/>
                 <properties/>
                 <border type="none"/>
                 <children>
-                  <grid id="board" class="Models.SquareBoardPanel" binding="board" layout-manager="GridLayoutManager" row-count="3" column-count="3" same-size-horizontally="true" same-size-vertically="true" hgap="0" vgap="0">
+                  <grid id="board" binding="board" layout-manager="GridLayoutManager" row-count="3" column-count="3" same-size-horizontally="true" same-size-vertically="true" hgap="0" vgap="0">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>

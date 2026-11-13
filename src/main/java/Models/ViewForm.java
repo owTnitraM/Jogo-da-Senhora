@@ -5,6 +5,9 @@ import com.intellij.uiDesigner.core.GridLayoutManager;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 /**
@@ -12,10 +15,28 @@ import java.util.ArrayList;
  * A estrutura visual e a mesma do View.java: menu inicial + tela do jogo,
  * trocadas por um CardLayout.
  *
- * <p>O arquivo ViewForm.form e a fonte da tela para o Swing UI Designer;
- * o metodo {@code $$$setupUI$$$} e gerado a partir dele.</p>
+ * <p>Todos os componentes sao componentes padrao do Swing (JPanel, JLabel,
+ * JButton, ...), sem classes extras, para que o arquivo ViewForm.form
+ * continue sendo editavel no Swing UI Designer.</p>
+ *
+ * <p>Os antigos Canvas de pontos viraram {@link JLabel}s com um icone
+ * circular gerado em memoria (ver {@link #circleIcon(int, boolean)}).</p>
  */
 public class ViewForm {
+
+    // ===== Cores dos indicadores (mesmas do View.java)
+    private static final Color OUTER_GREEN = new Color(0, 119, 32);
+    private static final Color INNER_GREEN = new Color(64, 194, 64);
+    private static final Color GRAY = new Color(128, 128, 128);
+    private static final Color LIGHT_GRAY = new Color(226, 226, 226);
+
+    private static final int POINT_SIZE = 30;
+    private static final int TURN_SIZE = 25;
+
+    private static final ImageIcon POINT_ON = circleIcon(POINT_SIZE, true);
+    private static final ImageIcon POINT_OFF = circleIcon(POINT_SIZE, false);
+    private static final ImageIcon TURN_ON = circleIcon(TURN_SIZE, true);
+    private static final ImageIcon TURN_OFF = circleIcon(TURN_SIZE, false);
 
     // ===== Setup
     private JPanel root;
@@ -51,7 +72,6 @@ public class ViewForm {
 
     // ===== Game
     private JPanel gamePanel;
-    private JLabel gamePaddingLabel;
 
     // top round counter bar
     private JPanel roundPointsPanelContainer;
@@ -60,13 +80,13 @@ public class ViewForm {
     private JLabel roundPointsPanelP2Indicator;
     private JLabel winIndicatorLabel;
 
-    private PointIndicator p1Point1Canvas;
-    private PointIndicator p1Point2Canvas;
-    private PointIndicator p1Point3Canvas;
+    private JLabel p1Point1Label;
+    private JLabel p1Point2Label;
+    private JLabel p1Point3Label;
 
-    private PointIndicator p2Point1Canvas;
-    private PointIndicator p2Point2Canvas;
-    private PointIndicator p2Point3Canvas;
+    private JLabel p2Point1Label;
+    private JLabel p2Point2Label;
+    private JLabel p2Point3Label;
 
     // player info (left), board (center) and game info (right)
     private JPanel gameContentPanel;
@@ -74,14 +94,14 @@ public class ViewForm {
 
     private JPanel p1InfoPanel;
     private JPanel p1TurnIndicatorContainer;
-    private PointIndicator p1TurnIndicator;
+    private JLabel p1TurnIndicator;
     private JPanel p1InfoLabelPanel;
     private JLabel p1NameLabel;
     private JLabel p1ScoreLabel;
 
     private JPanel p2InfoPanel;
     private JPanel p2TurnIndicatorContainer;
-    private PointIndicator p2TurnIndicator;
+    private JLabel p2TurnIndicator;
     private JPanel p2InfoLabelPanel;
     private JLabel p2NameLabel;
     private JLabel p2ScoreLabel;
@@ -89,8 +109,8 @@ public class ViewForm {
     private JButton exitButton;
 
     // Game Board
-    private BoardContainerPanel boardContainer;
-    private SquareBoardPanel board;
+    private JPanel boardContainer;
+    private JPanel board;
     private JButton boardButton1;
     private JButton boardButton2;
     private JButton boardButton3;
@@ -115,7 +135,7 @@ public class ViewForm {
 
     // ===== Estado da tela
     private final ArrayList<JButton> boardButtonList = new ArrayList<>();
-    private final ArrayList<PointIndicator> playerPointCanvasList = new ArrayList<>();
+    private final ArrayList<JLabel> playerPointLabels = new ArrayList<>();
 
     public ViewForm() {
         this(800, 480);
@@ -140,25 +160,66 @@ public class ViewForm {
         boardButtonList.add(boardButton8);
         boardButtonList.add(boardButton9);
 
-        playerPointCanvasList.add(p1Point1Canvas);
-        playerPointCanvasList.add(p1Point2Canvas);
-        playerPointCanvasList.add(p1Point3Canvas);
-        playerPointCanvasList.add(p2Point1Canvas);
-        playerPointCanvasList.add(p2Point2Canvas);
-        playerPointCanvasList.add(p2Point3Canvas);
+        playerPointLabels.add(p1Point1Label);
+        playerPointLabels.add(p1Point2Label);
+        playerPointLabels.add(p1Point3Label);
+        playerPointLabels.add(p2Point1Label);
+        playerPointLabels.add(p2Point2Label);
+        playerPointLabels.add(p2Point3Label);
 
-        p1TurnIndicator.setPreferredSize(new Dimension(25, 25));
-        p2TurnIndicator.setPreferredSize(new Dimension(25, 25));
+        for (JLabel point : playerPointLabels) {
+            point.setIcon(POINT_OFF);
+            point.setPreferredSize(new Dimension(POINT_SIZE, POINT_SIZE));
+        }
+
+        p1TurnIndicator.setIcon(TURN_OFF);
+        p2TurnIndicator.setIcon(TURN_OFF);
+        p1TurnIndicator.setPreferredSize(new Dimension(TURN_SIZE, TURN_SIZE));
+        p2TurnIndicator.setPreferredSize(new Dimension(TURN_SIZE, TURN_SIZE));
 
         exitButton.setPreferredSize(new Dimension(125, 40));
         continueButton.setPreferredSize(new Dimension(125, 40));
+        continueButton.setVisible(false);
 
         sameCharWarningLabel.setForeground(Color.RED);
 
-        // Label vazio no sul da tela do jogo (padding, igual ao View.java)
-        gamePaddingLabel.setPreferredSize(new Dimension(10, 16));
+        // Tabuleiro sempre quadrado, como no View.java
+        board.setPreferredSize(new Dimension(330, 330));
+        boardContainer.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                keepBoardSquare();
+            }
+        });
+    }
 
-        continueButton.setVisible(false);
+    private void keepBoardSquare() {
+        int size = Math.min(boardContainer.getWidth(), boardContainer.getHeight());
+
+        if (size > 0 && board.getPreferredSize().width != size) {
+            board.setPreferredSize(new Dimension(size, size));
+            boardContainer.revalidate();
+        }
+    }
+
+    /**
+     * Desenha o circulo de ponto/vez: verde quando ativo, cinza quando inativo.
+     * (Era o paint() dos Canvas anonimos do View.java.)
+     */
+    private static ImageIcon circleIcon(int size, boolean active) {
+        BufferedImage image = new BufferedImage(size, size, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2 = image.createGraphics();
+
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2.setColor(active ? INNER_GREEN : LIGHT_GRAY);
+        g2.fillOval(0, 0, size - 1, size - 1);
+
+        g2.setColor(active ? OUTER_GREEN : GRAY);
+        g2.setStroke(new BasicStroke(2));
+        g2.drawOval(1, 1, size - 2, size - 2);
+
+        g2.dispose();
+        return new ImageIcon(image);
     }
 
     private void buildFrame(int windowWidth, int windowHeight) {
@@ -188,15 +249,15 @@ public class ViewForm {
     }
 
     public void setP1TurnIndicator(boolean b) {
-        p1TurnIndicator.setActive(b);
+        p1TurnIndicator.setIcon(b ? TURN_ON : TURN_OFF);
     }
 
     public void setP2TurnIndicator(boolean b) {
-        p2TurnIndicator.setActive(b);
+        p2TurnIndicator.setIcon(b ? TURN_ON : TURN_OFF);
     }
 
-    public void setPlayerPointCanvas(PointIndicator c, boolean b) {
-        c.setActive(b);
+    public void setPlayerPointActive(JLabel label, boolean b) {
+        label.setIcon(b ? POINT_ON : POINT_OFF);
     }
 
     public void setContinueButtonVisible(boolean visible) {
@@ -230,8 +291,8 @@ public class ViewForm {
         return boardButtonList;
     }
 
-    public ArrayList<PointIndicator> getPlayerPointCanvasList() {
-        return playerPointCanvasList;
+    public ArrayList<JLabel> getPlayerPointLabels() {
+        return playerPointLabels;
     }
 
     public JButton getPlayButton() {
@@ -458,28 +519,28 @@ public class ViewForm {
         roundPointsPanelP1Indicator.setText("X");
         roundPointsPanel.add(roundPointsPanelP1Indicator, cell(0, 0, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GROW, FIXED));
 
-        p1Point1Canvas = new PointIndicator();
-        roundPointsPanel.add(p1Point1Canvas, cell(0, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GROW, FIXED, new Dimension(30, 30)));
+        p1Point1Label = new JLabel();
+        roundPointsPanel.add(p1Point1Label, cell(0, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GROW, FIXED, new Dimension(POINT_SIZE, POINT_SIZE)));
 
-        p1Point2Canvas = new PointIndicator();
-        roundPointsPanel.add(p1Point2Canvas, cell(0, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GROW, FIXED, new Dimension(30, 30)));
+        p1Point2Label = new JLabel();
+        roundPointsPanel.add(p1Point2Label, cell(0, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GROW, FIXED, new Dimension(POINT_SIZE, POINT_SIZE)));
 
-        p1Point3Canvas = new PointIndicator();
-        roundPointsPanel.add(p1Point3Canvas, cell(0, 3, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GROW, FIXED, new Dimension(30, 30)));
+        p1Point3Label = new JLabel();
+        roundPointsPanel.add(p1Point3Label, cell(0, 3, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GROW, FIXED, new Dimension(POINT_SIZE, POINT_SIZE)));
 
         winIndicatorLabel = new JLabel();
         winIndicatorLabel.setHorizontalAlignment(SwingConstants.CENTER);
         winIndicatorLabel.setText(" - ");
         roundPointsPanel.add(winIndicatorLabel, cell(0, 4, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GROW, FIXED));
 
-        p2Point3Canvas = new PointIndicator();
-        roundPointsPanel.add(p2Point3Canvas, cell(0, 5, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GROW, FIXED, new Dimension(30, 30)));
+        p2Point3Label = new JLabel();
+        roundPointsPanel.add(p2Point3Label, cell(0, 5, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GROW, FIXED, new Dimension(POINT_SIZE, POINT_SIZE)));
 
-        p2Point2Canvas = new PointIndicator();
-        roundPointsPanel.add(p2Point2Canvas, cell(0, 6, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GROW, FIXED, new Dimension(30, 30)));
+        p2Point2Label = new JLabel();
+        roundPointsPanel.add(p2Point2Label, cell(0, 6, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GROW, FIXED, new Dimension(POINT_SIZE, POINT_SIZE)));
 
-        p2Point1Canvas = new PointIndicator();
-        roundPointsPanel.add(p2Point1Canvas, cell(0, 7, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GROW, FIXED, new Dimension(30, 30)));
+        p2Point1Label = new JLabel();
+        roundPointsPanel.add(p2Point1Label, cell(0, 7, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GROW, FIXED, new Dimension(POINT_SIZE, POINT_SIZE)));
 
         roundPointsPanelP2Indicator = new JLabel();
         roundPointsPanelP2Indicator.setFont(new Font("Lexend", Font.BOLD, 14));
@@ -491,7 +552,7 @@ public class ViewForm {
         gameContentPanel.setLayout(new BorderLayout(0, 0));
         gamePanel.add(gameContentPanel, BorderLayout.CENTER);
 
-        gamePaddingLabel = new JLabel();
+        JLabel gamePaddingLabel = new JLabel();
         gamePaddingLabel.setText("");
         gamePanel.add(gamePaddingLabel, BorderLayout.SOUTH);
 
@@ -508,8 +569,7 @@ public class ViewForm {
         p1TurnIndicatorContainer.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
         p1InfoPanel.add(p1TurnIndicatorContainer, BorderLayout.WEST);
 
-        p1TurnIndicator = new PointIndicator();
-        p1TurnIndicator.setPreferredSize(new Dimension(25, 25));
+        p1TurnIndicator = new JLabel();
         p1TurnIndicatorContainer.add(p1TurnIndicator);
 
         p1InfoLabelPanel = new JPanel();
@@ -534,8 +594,7 @@ public class ViewForm {
         p2TurnIndicatorContainer.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
         p2InfoPanel.add(p2TurnIndicatorContainer, BorderLayout.WEST);
 
-        p2TurnIndicator = new PointIndicator();
-        p2TurnIndicator.setPreferredSize(new Dimension(25, 25));
+        p2TurnIndicator = new JLabel();
         p2TurnIndicatorContainer.add(p2TurnIndicator);
 
         p2InfoLabelPanel = new JPanel();
@@ -557,15 +616,14 @@ public class ViewForm {
 
         exitButton = new JButton();
         exitButton.setText("Exit");
-        exitButton.setPreferredSize(new Dimension(125, 40));
         gamePlayerInfoPanel.add(exitButton, new GridBagConstraints(0, 3, 1, 1, 1.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, insets(2, 5, 2, 5), 0, 0));
 
         // ----- Center: board
-        boardContainer = new BoardContainerPanel();
+        boardContainer = new JPanel();
         boardContainer.setLayout(new GridBagLayout());
         gameContentPanel.add(boardContainer, BorderLayout.CENTER);
 
-        board = new SquareBoardPanel();
+        board = new JPanel();
         board.setLayout(new GridLayoutManager(3, 3, insets(0, 0, 0, 0), 0, 0, true, true));
         boardContainer.add(board, new GridBagConstraints(0, 0, 1, 1, 1.0, 1.0, GridBagConstraints.CENTER, GridBagConstraints.NONE, insets(0, 0, 0, 0), 0, 0));
 
@@ -633,7 +691,6 @@ public class ViewForm {
 
         continueButton = new JButton();
         continueButton.setText("Continue");
-        continueButton.setPreferredSize(new Dimension(125, 40));
         gameInfoPanel.add(continueButton, new GridBagConstraints(0, 1, 1, 1, 1.0, 1.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, insets(2, 5, 2, 5), 0, 0));
     }
 

@@ -5,7 +5,6 @@ import lombok.Setter;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.concurrent.TimeUnit;
 import java.awt.EventQueue;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -18,6 +17,11 @@ public class Controller implements ActionListener {
     private final Timer timer = new Timer();
     private final int sleepTime = 1;
     private int sessionSeconds = 0;
+
+    // Pausa entre o fim de uma rodada e a limpeza do tabuleiro.
+    // Usa javax.swing.Timer para nao travar a EDT (a tela continua desenhando).
+    private javax.swing.Timer pauseTimer;
+    private boolean roundPaused = false;
 
     public Controller() {
         this.modeloSenhora = new ModeloSenhora();
@@ -69,14 +73,36 @@ public class Controller implements ActionListener {
     }
 
     private void resetTopBar() {
+        stopPauseTimer();
+        roundPaused = false;
+
         for (int i = 0; i < 6; i++) {
-            view.setPlayerPointCanvas(view.getPlayerPointCanvasList().get(i), false);
+            view.setPlayerPointActive(view.getPlayerPointLabels().get(i), false);
         }
 
         view.setContinueButtonVisible(false);
         modeloSenhora.setWinState(false);
         view.getWinIndicatorLabel().setText(" - ");
         view.validatePointsPanel();
+    }
+
+    /** Executa uma acao depois de N segundos, sem bloquear a EDT. */
+    private void afterPause(int seconds, Runnable action) {
+        stopPauseTimer();
+
+        pauseTimer = new javax.swing.Timer(seconds * 1000, e -> {
+            pauseTimer = null;
+            action.run();
+        });
+        pauseTimer.setRepeats(false);
+        pauseTimer.start();
+    }
+
+    private void stopPauseTimer() {
+        if (pauseTimer != null) {
+            pauseTimer.stop();
+            pauseTimer = null;
+        }
     }
 
     private void handlePlayButton() {
@@ -130,6 +156,7 @@ public class Controller implements ActionListener {
     }
 
     private void handleBoardPress(int btn) {
+        if (roundPaused) return;
         if (modeloSenhora.isWinState()) return;
         if (view.getBoardButtonList().get(btn).getText().equals("")) {
             view.getBoardButtonList().get(btn).setText(
@@ -141,10 +168,12 @@ public class Controller implements ActionListener {
             String w = modeloSenhora.checkWin();
             if (!w.equals("")) {
                 doRoundWin(w);
+                return;
             }
 
             if (modeloSenhora.checkDraw()) {
                 doDraw();
+                return;
             }
 
             updateStats();
@@ -152,13 +181,24 @@ public class Controller implements ActionListener {
     }
 
     private void doDraw() {
+        // Mostra o empate e so depois limpa o tabuleiro (sem travar a tela)
         view.getWinIndicatorLabel().setText("Tie!");
-        sleepAndResetTopPanel();
+        view.validatePointsPanel();
+        updateStats();
 
-        resetBoardButtons();
-        modeloSenhora.doDraw();
-        view.setP1TurnIndicator(modeloSenhora.isP1Turn() ? true : false);
-        view.setP2TurnIndicator(!modeloSenhora.isP1Turn() ? true : false);
+        roundPaused = true;
+        afterPause(sleepTime, () -> {
+            view.getWinIndicatorLabel().setText(" - ");
+            view.validatePointsPanel();
+
+            modeloSenhora.doDraw();
+            resetBoardButtons();
+            view.setP1TurnIndicator(modeloSenhora.isP1Turn() ? true : false);
+            view.setP2TurnIndicator(!modeloSenhora.isP1Turn() ? true : false);
+            updateStats();
+
+            roundPaused = false;
+        });
     }
 
     private void doRoundWin(String w) {
@@ -173,31 +213,31 @@ public class Controller implements ActionListener {
         int offset = p1 ? 0 : 3;
 
         for (int i = 0; i < points; i++) {
-            view.setPlayerPointCanvas(
-                    view.getPlayerPointCanvasList().get(i + offset),
+            view.setPlayerPointActive(
+                    view.getPlayerPointLabels().get(i + offset),
                     true
             );
         }
 
+        // Avisa quem ganhou a rodada ANTES da pausa
         view.getWinIndicatorLabel().setText(p1
                 ? modeloSenhora.getP1Char() + " won"
                 : modeloSenhora.getP2Char() + " won");
-
-        sleepAndResetTopPanel();
-        resetBoardButtons();
+        view.validatePointsPanel();
         updateStats();
-        checkGameWin();
-    }
 
-    private void sleepAndResetTopPanel() {
-        view.validatePointsPanel();
-        try {
-            TimeUnit.SECONDS.sleep(sleepTime);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-        view.getWinIndicatorLabel().setText(" - ");
-        view.validatePointsPanel();
+        // Bloqueia o tabuleiro durante a pausa e continua sem travar a EDT
+        roundPaused = true;
+        afterPause(sleepTime, () -> {
+            view.getWinIndicatorLabel().setText(" - ");
+            view.validatePointsPanel();
+
+            resetBoardButtons();
+            roundPaused = false;
+
+            updateStats();
+            checkGameWin();
+        });
     }
 
     private void resetBoardButtons() {
@@ -210,8 +250,6 @@ public class Controller implements ActionListener {
         String w = modeloSenhora.checkGameWin();
         if (w.equals("")) return;
 
-        view.setContinueButtonVisible(true);
-
         modeloSenhora.doGameWin(w);
 
         boolean p1 = w.equals(modeloSenhora.getP1Char());
@@ -220,13 +258,13 @@ public class Controller implements ActionListener {
                 ? modeloSenhora.getP1Char() + " won!"
                 : modeloSenhora.getP2Char() + " won!");
         view.validatePointsPanel();
-        try {
-            TimeUnit.SECONDS.sleep(sleepTime + 1);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-        view.getWinIndicatorLabel().setText(" - ");
-        view.validatePointsPanel();
+        view.setContinueButtonVisible(true);
+        updateStats();
+
+        afterPause(sleepTime + 1, () -> {
+            view.getWinIndicatorLabel().setText(" - ");
+            view.validatePointsPanel();
+        });
     }
 
     private void changeScreen(String s) {
