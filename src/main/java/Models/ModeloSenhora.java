@@ -107,7 +107,6 @@ public class ModeloSenhora {
         p1Points = 0;
         p2Points = 0;
         clearBoard();
-        // Sorteia quem comeca, igual a uma partida nova
         isP1Turn = getRandomBoolean();
     }
 

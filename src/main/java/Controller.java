@@ -18,8 +18,6 @@ public class Controller implements ActionListener {
     private final int sleepTime = 1;
     private int sessionSeconds = 0;
 
-    // Pausa entre o fim de uma rodada e a limpeza do tabuleiro.
-    // Usa javax.swing.Timer para nao travar a EDT (a tela continua desenhando).
     private javax.swing.Timer pauseTimer;
     private boolean roundPaused = false;
 
@@ -85,11 +83,9 @@ public class Controller implements ActionListener {
         view.getWinIndicatorLabel().setText(" - ");
         view.validatePointsPanel();
 
-        // Quem comeca a partida nova pode ter mudado: atualiza os circulos de vez
         syncTurnIndicators();
     }
 
-    /** Reflete no topo quem e o proximo a jogar. */
     private void syncTurnIndicators() {
         view.setP1TurnIndicator(modeloSenhora.isP1Turn());
         view.setP2TurnIndicator(!modeloSenhora.isP1Turn());
@@ -225,14 +221,12 @@ public class Controller implements ActionListener {
             );
         }
 
-        // Avisa quem ganhou a rodada ANTES da pausa
         view.getWinIndicatorLabel().setText(p1
                 ? modeloSenhora.getP1Char() + " won"
                 : modeloSenhora.getP2Char() + " won");
         view.validatePointsPanel();
         updateStats();
 
-        // Bloqueia o tabuleiro durante a pausa e continua sem travar a EDT
         roundPaused = true;
         afterPause(sleepTime, () -> {
             view.getWinIndicatorLabel().setText(" - ");
