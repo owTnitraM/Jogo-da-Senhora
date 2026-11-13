@@ -1,0 +1,1 @@
+rootProject.name = "Jogo-da-Senhora-np2"
