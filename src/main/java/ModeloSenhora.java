@@ -1,5 +1,3 @@
-package Models;
-
 import lombok.Getter;
 import lombok.Setter;
 
