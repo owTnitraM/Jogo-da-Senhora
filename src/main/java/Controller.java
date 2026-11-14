@@ -89,7 +89,6 @@ public class Controller implements ActionListener {
         view.setP2TurnIndicator(!modeloSenhora.isP1Turn());
     }
 
-    /** Executa uma acao depois de N segundos, sem bloquear a EDT. */
     private void afterPause(int seconds, Runnable action) {
         stopPauseTimer();
 
